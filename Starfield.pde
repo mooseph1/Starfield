@@ -51,14 +51,14 @@ class NormalParticle implements Particle
   {
     particleX = particleX + (Math.cos(angle))*(speed);
     particleY = particleY + (Math.sin(angle))*(speed);
-    if(particleX > 1005 || particleX < -5)
+    if(particleX > 1050 || particleX < -50)
     {
       particleX = 500;
       particleY = 300;
       speed = (Math.random()*5+5);
       angle = (Math.random()*(2*Math.PI));
     }
-    if(particleY > 605 || particleY < -5)
+    if(particleY > 650 || particleY < -50)
     {
       particleX = 500;
       particleY = 300;
