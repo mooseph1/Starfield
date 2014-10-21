@@ -21,19 +21,21 @@ public void setup()
   size(1000,600);
   background(0);
   frameRate(30);
-  star = new Particle[100];
-  for(int a = 0; a < (star.length-1); a++)
+  star = new Particle[200];
+  for(int a = 0; a < (star.length-2); a++)
   {
     star[a] = new NormalParticle();
   }
-  star[99] = new OddballParticle();
+  star[198] = new JumboParticle();
+  star[199] = new OddballParticle();
 }
 
 public void draw()
 {
   if(lightspeed == false)
   {
-    background(0);
+    fill(0,0,0,50);
+    rect(-1,-1,1001,601);
   }
   for(int b = 0; b < star.length; b++)
   {
@@ -55,7 +57,7 @@ class NormalParticle implements Particle
   {
     particleX = 500;
     particleY = 300;
-    speed = (Math.random()*5+5);
+    speed = (Math.random()*3+3);
     angle = (Math.random()*(2*Math.PI));
     pigment1 = ((int)(Math.random()*255));
     pigment2 = ((int)(Math.random()*255));
@@ -69,17 +71,30 @@ class NormalParticle implements Particle
     {
       particleX = 500;
       particleY = 300;
+      speed = (Math.random()*5+5);
+      angle = (Math.random()*(2*Math.PI));
     }
     if(particleY > 605 || particleY < -5)
     {
       particleX = 500;
       particleY = 300;
+      speed = (Math.random()*5+5);
+      angle = (Math.random()*(2*Math.PI));
     }
   }
   public void show()
   {
-    fill(pigment1,pigment2,pigment3);
-    ellipse(((int)particleX), ((int)particleY), 10, 10);
+    fill(pigment1, pigment2, pigment3);
+    ellipse((int)particleX, (int)particleY, 10, 10);
+  }
+}
+
+class JumboParticle extends NormalParticle
+{
+  public void show()
+  {
+    fill(0,180,255);
+    ellipse((int)particleX, (int)particleY, 100, 100);
   }
 }
 
